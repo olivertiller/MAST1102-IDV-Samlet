@@ -1,0 +1,233 @@
+\documentclass[12pt]{article}
+
+\usepackage{packages}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{import}
+\usepackage{booktabs}
+
+% --- Biblatex med refsection for separate referanselister ---
+\usepackage[backend=biber,
+            style=authoryear,
+            maxcitenames=2,
+            urldate=long,
+            refsection=chapter
+           ]{biblatex}
+\addbibresource{Oppgave1/references.bib}
+\addbibresource{Oppgave2/references.bib}
+\addbibresource{Oppgave3/references.bib}
+\addbibresource{Oppgave4/references.bib}
+\addbibresource{Oppgave5/references.bib}
+
+\begin{document}
+
+% ============================================================
+%  OPPGAVE 1: Kvile AS
+% ============================================================
+\begin{refsection}[Oppgave1/references.bib]
+
+\begin{titlepage}
+\vbox{ }
+\vbox{ }
+\begin{center}
+\includegraphics[width=0.40\textwidth]{NTNU_logo.png}\\[1cm]
+\textsc{\Large MAST1102 - Maskinteknikk 2}\\[0.5cm]
+\textsc{\Large Industriell Drift og Vedlikehold}\\[0.5cm]
+\vbox{ }
+\HRule \\[0.4cm]
+{ \huge \bfseries Rapport 1: Kvile AS}\\[0.4cm]
+\HRule \\[1.5cm]
+\large
+\emph{Kandidatnummer:}\\
+\vfill
+{\large Dato 08/05/2026 }
+\end{center}
+\end{titlepage}
+
+\frontmatter
+
+\newpage
+\section*{Sammendrag}
+Rapporten vurderer hvordan Kvile AS bør styre produksjon, layout og bærekraftstiltak gitt dagens kundemiks. Kvile produserer utemøbler i aluminium og tre for Statens vegvesen, Plantasjen og Møbelringen, og rapporten besvarer fire deloppgaver knyttet til marked, produksjonsstyring, layout og bærekraft.
+
+Kvile klassifiseres som en serie- og batchprodusent med over 300 produktvarianter og en omsetning på ca.\ 200 MNOK. Etterspørselen er sterkt sesongavhengig, med en topp i sommermånedene. Hovedanbefalingen er at Kvile viderefører ordreproduksjon (MTO) for Vegvesenet, men endrer styringen av butikkmarkedet fra produksjon til lager (MTS) til montasje på ordre (ATO). Dette flytter kundeordrens dekoblingspunkt til komponentlageret og reduserer antall lagervarer med ca.\ 76\,\%.
+
+Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanlegg. Bærekraftsanalysen identifiserer forbedringsmuligheter innen emballasje, materialvalg, transport og produktdesign.
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\newpage
+\input{Oppgave1/Hoveddel/1 Om rapporten}
+\input{Oppgave1/Hoveddel/2 Marked, kunder og produkter}
+\input{Oppgave1/Hoveddel/3 Produksjonsstyring}
+\input{Oppgave1/Hoveddel/4 Layout}
+\input{Oppgave1/Hoveddel/5 Bærekraft}
+\input{Oppgave1/Hoveddel/6 Konklusjon}
+
+\newpage
+\printbibliography[title={Referanser}]
+
+\end{refsection}
+
+% ============================================================
+%  OPPGAVE 2: Lab Vibrasjon
+% ============================================================
+\begin{refsection}[Oppgave2/references.bib]
+
+\newpage
+\begin{titlepage}
+\vbox{ }
+\vbox{ }
+\begin{center}
+\includegraphics[width=0.40\textwidth]{NTNU_logo.png}\\[1cm]
+\textsc{\Large MAST1102 - Maskinteknikk 2}\\[0.5cm]
+\textsc{\Large Industriell Drift og Vedlikehold}\\[0.5cm]
+\vbox{ }
+\HRule \\[0.4cm]
+{ \huge \bfseries Rapport 2: Lab Vibrasjon}\\[0.4cm]
+\HRule \\[1.5cm]
+\large
+\emph{Kandidatnummer:}\\
+\vfill
+{\large Dato 08/05/2026 }
+\end{center}
+\end{titlepage}
+
+\frontmatter
+
+\newpage
+\input{Oppgave2/Hoveddel/1 Sammendrag}
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\input{Oppgave2/Hoveddel/1.5 Innledning}
+\input{Oppgave2/Hoveddel/2 Teori}
+\input{Oppgave2/Hoveddel/3 Metode}
+\input{Oppgave2/Hoveddel/4 Resultater}
+\input{Oppgave2/Hoveddel/5 Diskusjon}
+\input{Oppgave2/Hoveddel/6 Konklusjon}
+
+\newpage
+\printbibliography[title={Referanser}]
+
+\end{refsection}
+
+% ============================================================
+%  OPPGAVE 3: (plassholder)
+% ============================================================
+\begin{refsection}[Oppgave3/references.bib]
+
+\newpage
+\begin{titlepage}
+\vbox{ }
+\vbox{ }
+\begin{center}
+\includegraphics[width=0.40\textwidth]{NTNU_logo.png}\\[1cm]
+\textsc{\Large MAST1102 - Maskinteknikk 2}\\[0.5cm]
+\textsc{\Large Industriell Drift og Vedlikehold}\\[0.5cm]
+\vbox{ }
+\HRule \\[0.4cm]
+{ \huge \bfseries Rapport 3: (tittel)}\\[0.4cm]
+\HRule \\[1.5cm]
+\large
+\emph{Kandidatnummer:}\\
+\vfill
+{\large Dato 08/05/2026 }
+\end{center}
+\end{titlepage}
+
+\mainmatter
+
+\input{Oppgave3/innhold}
+
+\newpage
+\printbibliography[title={Referanser}]
+
+\end{refsection}
+
+% ============================================================
+%  OPPGAVE 4: (plassholder)
+% ============================================================
+\begin{refsection}[Oppgave4/references.bib]
+
+\newpage
+\begin{titlepage}
+\vbox{ }
+\vbox{ }
+\begin{center}
+\includegraphics[width=0.40\textwidth]{NTNU_logo.png}\\[1cm]
+\textsc{\Large MAST1102 - Maskinteknikk 2}\\[0.5cm]
+\textsc{\Large Industriell Drift og Vedlikehold}\\[0.5cm]
+\vbox{ }
+\HRule \\[0.4cm]
+{ \huge \bfseries Rapport 4: (tittel)}\\[0.4cm]
+\HRule \\[1.5cm]
+\large
+\emph{Kandidatnummer:}\\
+\vfill
+{\large Dato 08/05/2026 }
+\end{center}
+\end{titlepage}
+
+\mainmatter
+
+\input{Oppgave4/innhold}
+
+\newpage
+\printbibliography[title={Referanser}]
+
+\end{refsection}
+
+% ============================================================
+%  OPPGAVE 5: Refleksjonsoppgave
+% ============================================================
+\begin{refsection}[Oppgave5/references.bib]
+
+\newpage
+\begin{titlepage}
+\vbox{ }
+\vbox{ }
+\begin{center}
+\includegraphics[width=0.40\textwidth]{NTNU_logo.png}\\[1cm]
+\textsc{\Large MAST1102 - Maskinteknikk 2}\\[0.5cm]
+\textsc{\Large Industriell Drift og Vedlikehold}\\[0.5cm]
+\vbox{ }
+\HRule \\[0.4cm]
+{ \huge \bfseries Rapport 5: Refleksjonsoppgave}\\[0.4cm]
+\HRule \\[1.5cm]
+\large
+\emph{Kandidatnummer:}\\
+\vfill
+{\large Dato: 08/05/2026 }
+\end{center}
+\end{titlepage}
+
+\frontmatter
+
+\newpage
+\tableofcontents
+
+\mainmatter
+
+\newpage
+\input{Oppgave5/Hoveddel/6 Refleksjonsnotat}
+\input{Oppgave5/Hoveddel/7 Refleksjon over studievalg}
+
+\newpage
+\printbibliography[title={Referanser}]
+
+\end{refsection}
+
+\end{document}

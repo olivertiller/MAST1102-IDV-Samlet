@@ -1,0 +1,66 @@
+\section*{Oppgave 3 - Layout}
+\setcounter{section}{3}
+\addcontentsline{toc}{section}{Oppgave 3 — Layout}
+
+\setcounter{subsection}{0}
+
+\subsection{Relevant teori}
+
+Layout beskriver hvordan produksjonsressurser er fysisk plassert i fabrikken, og påvirker materialflyt, transportbehov og gjennomløpstid \parencite{strandhagen2024}. \textit{Funksjonell layout} grupperer ressurser etter prosesstype og passer ved høy produktvariasjon og ulike prosessruter. \textit{Linje-/produktlayout} har derimot en fast rekkefølge av operasjoner og passer ved høyt volum og lav variasjon \parencite{slack2019}. I praksis benytter mange bedrifter kombinasjoner av flere layouttyper.
+
+
+\subsection{Kviles layout}
+
+Produksjonen består av aluminiumbearbeiding, snekkeravdeling, trekomponentmontasje, lakkering (to separate anlegg med betydelig omstillingstid), tørking, endemontering og pakking. Ulike produkter følger ulike ruter: rene treprodukter hopper over aluminiumbearbeiding, mens aluminium/tre-modellene behandles i parallell gjennom begge materialløpene før de møtes i endemonteringen. Dette samsvarer med \textit{funksjonell layout}: ressurser gruppert etter prosesstype, og produktene flyttes mellom avdelingene etter behov.
+
+Lakkeanleggene har imidlertid trekk av \textit{linjelayout} internt, da alle deler følger samme sekvens (forbehandling $\rightarrow$ lakkering $\rightarrow$ tørking). Kviles layout kan dermed beskrives som en \textbf{kombinasjon}: primært funksjonell layout på fabrikknivå, med linjeorganiserte lakkeanlegg som delte ressurser. Figur~\ref{fig:layout-flyt} illustrerer materialflyten gjennom fabrikken.
+
+Dersom Kvile går over til ATO for butikkmarkedet, som foreslått i oppgave~2, bør layouten også tilpasses. Komponentlageret bør plasseres nær endemontering og pakking, slik at sluttmontasjen kan gjennomføres med kort gjennomløpstid. Dette vil redusere intern transport og gjøre det enklere å styre montasjen etter faktiske kundeordrer.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=1.1cm,
+        block/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=0.85cm, align=center, font=\small},
+        alu/.style={block, fill=blue!12},
+        tre/.style={block, fill=green!12},
+        felles/.style={block, fill=orange!15},
+        arr/.style={-{Stealth[length=2.5mm]}, thick},
+    ]
+        % --- Venstre kolonne: Aluminium ---
+        \node[alu] (alu-raw) {Aluminium (råvare)};
+        \node[alu, below=of alu-raw] (alu-bearb) {Al-bearbeiding\\{\footnotesize kapp/bøy/slip/vask}};
+        \node[alu, below=of alu-bearb] (alu-lakk) {Lakkering Al\\+ tørking (2 døgn)};
+ 
+        % --- Høyre kolonne: Tre ---
+        \node[tre, right=2.5cm of alu-raw] (tre-raw) {Treverk (råvare)};
+        \node[tre, below=of tre-raw] (tre-bearb) {Snekkeravd.\\{\footnotesize kapp/fres/slip}};
+        \node[tre, below=of tre-bearb] (tre-mont) {Trekomp.-montasje\\{\footnotesize plate/sete/rygg}};
+        \node[tre, below=of tre-mont] (tre-lakk) {Lakkering tre\\+ tørking (2 døgn)};
+ 
+        % --- Felles bunn ---
+        \node[felles, below=1.3cm of $(alu-lakk)!0.5!(tre-lakk)$] (ende) {Endemontering};
+        \node[felles, below=of ende] (pakk) {Pakking / lager};
+ 
+        % Piler aluminium (ned)
+        \draw[arr, blue!60] (alu-raw) -- (alu-bearb);
+        \draw[arr, blue!60] (alu-bearb) -- (alu-lakk);
+        \draw[arr, blue!60] (alu-lakk) |- (ende);
+ 
+        % Piler tre (ned)
+        \draw[arr, green!50!black] (tre-raw) -- (tre-bearb);
+        \draw[arr, green!50!black] (tre-bearb) -- (tre-mont);
+        \draw[arr, green!50!black] (tre-mont) -- (tre-lakk);
+        \draw[arr, green!50!black] (tre-lakk) |- (ende);
+ 
+        % Endemontering til pakking
+        \draw[arr] (ende) -- (pakk);
+ 
+        % Kolonne-labels
+        \node[above=0.3cm of alu-raw, font=\footnotesize\bfseries, blue!70] {Aluminiumløp};
+        \node[above=0.3cm of tre-raw, font=\footnotesize\bfseries, green!50!black] {Treløp};
+ 
+    \end{tikzpicture}
+    \caption[Materialflyt hos Kvile AS]{Materialflyt hos Kvile AS. Blått løp viser aluminiumbearbeiding, grønt løp viser trebearbeiding. De to løpene møtes i endemonteringen. Layouten er primært funksjonell, med linjeorganiserte lakkeanlegg.}
+    \label{fig:layout-flyt}
+\end{figure}

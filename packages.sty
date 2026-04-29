@@ -1,0 +1,134 @@
+% Author - Jon Arnt Kårstad, NTNU IV-IMT
+
+
+% ------ Innhold -------
+% Overordnet sideoppsett
+% Bibliography & References
+% bruk av python kode i Latex
+% Front matter
+% Generelt
+% Bildeformattering
+% Språk
+% Main matter
+% Mathematics
+% Page setup
+% -----------------------
+
+
+% --- Overordnet sideoppsett ---
+\usepackage{float}
+\usepackage[a4paper, total={150mm, 245mm,footskip = 14mm}]{geometry}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.8em}
+\usepackage[none]{hyphenat} %gjør at ingen orddeling kan skje
+\usepackage{setspace} %gjør at onehalfspacing funker
+\onehalfspacing %1,5mm linjeavstand
+
+
+% --- Topptekst og bunntekst ---
+\usepackage{fancyhdr} % Lar oss lage egne topp- og bunntekster
+\pagestyle{fancy} % Aktiverer fancy topp- og bunntekststil for hele dokumentet
+\fancyhf{} %Formatterer topp/bunntekst riktig
+\renewcommand{\headrulewidth}{0.1ex} % Setter tykkelsen på topplinjen til 0.1ex
+\renewcommand{\footrulewidth}{0.1ex} % Setter tykkelsen på bunnlinjen til 0.1ex
+\fancyfoot[C]{\thepage} % Plasserer sidenummeret i midten av bunnteksten
+
+
+% --- Språk ---
+\usepackage{siunitx}    % Enable SI units
+\usepackage[norsk]{babel}
+\usepackage[utf8]{inputenc} % kan bruke æøå direkte i latex
+\addto\captionsnorsk{\renewcommand{\contentsname}{Innholdsfortegnelse}} %gir innholdsfortegnelsen navnet "innholdsfortegnelse"
+\addto\captionsnorsk{\renewcommand{\listfigurename}{Figurliste}}
+\addto\captionsnorsk{\renewcommand{\listtablename}{Tabelliste}}
+
+
+% --- Generelt ---
+\usepackage{import}     % Muligjør å importere sections
+\usepackage{csquotes}   % Provides international handling of quote marks. Especially useful for bibliography management using BibLaTeX
+\usepackage{hyperref}   % Hyper-references, possible to change color
+\hypersetup{    % Color of hyper-references
+    colorlinks,
+    citecolor = black,
+    filecolor = black,
+    linkcolor = black,
+    urlcolor = black
+}
+\usepackage{comment}    % Comment blocks of text using \begin{comment} ... \end{comment}
+\usepackage{pdfpages}   % Enables import of pdf-pages using e.g. \includepdf[pages=-]{./my_pdf.pdf}
+\usepackage{enumitem} %gir deg full kontroll på formattering av lister
+\usepackage{pdfpages}
+
+
+% --- Front matter ---
+% Definerer formattering av begynnelsen av dokumentet
+\newcommand{\frontmatter}{
+    \pagenumbering{roman}   % Setter sidetallene til små romertall (i, ii, iii, …)
+}
+
+
+% --- Main matter ---
+% Definerer formattering av hoveddel
+\newcommand{\mainmatter}{
+    \newpage
+    \pagenumbering{arabic}  % Sidetall blir vanlig tall
+}
+
+
+% --- Bildeformattering ---
+\usepackage{graphicx}   % Handle images
+\usepackage{wrapfig}    % Wrap text around images
+\usepackage{float}      % Force image location using "H"
+\usepackage{url}        % Insert urls
+\urlstyle{sf}           % Set url-style as "sans-serif". Other options are e.g. "same" or "rm"
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}   % Ruler
+\usepackage{caption}        % Enables controlling the look and feel of captions, see package documentation
+\usepackage{subcaption}     % Recommended when making sub-figures
+\newcommand{\source}[1]{\vspace{-4pt} \caption*{\hfill \footnotesize{Source: {#1}} } } % Easily insert sources in images
+
+
+% --- Matematikk ---
+\usepackage{bm}         % Muligjør fet skrift i mattemodus
+\usepackage{amsmath}    % Math formulas and improved typographical quality of their output
+\usepackage{amssymb}    % Extended symbol collection
+\usepackage{amsthm}     % Helps define theorem-like structures
+\usepackage{textcomp}   % Used in the package "gensymb" (below), which will give warnings if "textcomp" is not imported in advance
+\usepackage{gensymb}    % Adds extra generic symbols for math and text mode, e.g. \degree
+
+
+% --- bruk av python kode i Latex ---
+\usepackage{minted} % Includes several programming languages and styles, visit --https://www.ntnu.no/wiki/display/imtsoftware/Code+in+LaTeX-- for more information and examples
+
+
+% --- Bibliography & References---
+% biblatex lastes i main.tex for å støtte flere bib-filer
+
+
+% ---- Kode ----- 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    columns=fullflexible,
+    frame=single,
+    showstringspaces=false,
+    keepspaces=true,
+    numbers=left,
+    numberstyle=\tiny,
+    tabsize=2
+}
+
+\usepackage{pdfpages}
+
+\usepackage{microtype}
+\emergencystretch=3em
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{booktabs}
+\usetikzlibrary{positioning, arrows.meta, calc}

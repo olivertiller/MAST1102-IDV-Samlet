@@ -1,0 +1,188 @@
+\section*{Oppgave 2 - Produksjonsstyring}
+\setcounter{section}{2}
+\addcontentsline{toc}{section}{Oppgave 2 — Produksjonsstyring}
+
+\setcounter{subsection}{0}
+\subsection{Relevant teori}
+Kundeordrens dekoblingspunkt (KODP) er det punktet i materialflyten som skiller produksjon basert på kundeordre fra produksjon basert på prognose eller lagernivå \parencite{strandhagen2024}. Plasseringen av KODP gir opphav til fire hovedstyringsformer: engineering på ordre (ETO), produksjon på ordre (MTO), montasje på ordre (ATO) og produksjon til lager (MTS). Når KODP ligger langt oppstrøms, slik som ved MTO, skjer en større del av produksjonen etter kundeordre. Det gir høy fleksibilitet, men lengre leveringstid. Når KODP ligger langt nedstrøms, slik som ved MTS, produseres mer på prognose, noe som gir kort leveringstid men øker risikoen for feil lagerbeholdning \parencite{slack2019}.
+
+Innenfor lagernivåstyrt produksjon skilles det videre mellom trykk- og sugsystemer. I et trykksystem (push) styres produksjonen av prognoser og planer som ``trykker'' materialer gjennom verdikjeden, mens et sugsystem (pull) lar faktisk forbruk nedstrøms utløse påfyll fra foregående steg \parencite{strandhagen2024}. En konkret pull-mekanisme er \textit{Kanban}, der et signal fra en nedstrøms stasjon utløser påfyll oppstrøms, slik at varer i arbeid (VIA) holdes på et minimum. Valg av styringsprinsipp henger tett sammen med omstillingstider: lange omstillingstider favoriserer store serier og lavere frekvens, mens korte omstillingstider muliggjør mindre batcher og hyppigere produksjonsskifter.
+
+Lean-filosofien identifiserer syv former for sløsing (\textit{muda}), blant annet overproduksjon, unødvendig lager, venting og transport \parencite{strandhagen2024}. MRP er et push-basert verktøy for å beregne komponentbehov ut fra produksjonsplan, produktstruktur og lagerbeholdning \parencite{strandhagen2024}.
+
+
+\subsection{Nåsituasjon hos Kvile}
+
+Kvile bruker to ulike styringsformer. Vegvesenet styres som MTO, der produksjonen starter etter mottatt ordre. Butikksegmentet styres som MTS, der ferdig monterte og pakkede produkter ligger på ferdigvarelager. Forskjellene er oppsummert i tabell~\ref{tab:styringsformer} og illustrert i figur~\ref{fig:kodp}.
+
+Begge segmentene benytter i praksis et trykksystem (push): for Vegvesenet trykkes produksjonen gjennom fabrikken av kundeordren, mens butikksegmentet trykkes av salgsprognoser. Produksjonen foregår i serier/batcher, der farge dikterer seriestørrelsen da betydelig omstillingstid på lakkanleggene gjør det nødvendig å samle opp produksjon av samme farge.
+
+Sett i et Lean-perspektiv har Kviles nåværende oppsett potensielt flere former for sløsing: \textit{overproduksjon} av fargekombinasjoner med lavt salg (MTS med 304 SKU-er), \textit{unødvendig lager} bundet i ferdigvarer, \textit{venting} grunnet to døgns tørketid etter lakkering, og \textit{transport} med 10 lastebiler i tre-dagers turer gjennom hele Norge.
+
+% --- Tabell: Styringsformer ---
+\begin{table}[htbp]
+    \centering
+    \caption[Styringsformer]{Sammenligning av styringsformer hos Kvile AS.}
+    \label{tab:styringsformer}
+    \small
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        & \textbf{Vegvesenet} & \textbf{Plantasjen/Møbelringen} \\
+        \midrule
+        Styringsform        & MTO                & MTS \\
+        KODP                & Råvarelager         & Ferdigvarelager \\
+        Styringsprinsipp    & Push (kundeordre)   & Push (prognose) \\
+        Antall varianter    & 4                   & 304 \\
+        Leveringstid        & $\geq$ 4 måneder   & Fra lager \\
+        Planleggingshorisont & Lang, forutsigbar  & Kort, usikker \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsection{Vurdering og endringsforslag}
+
+MTO-styringen av Vegvesenet er godt tilpasset både kundens og Kviles behov. Lang ordrehorisont, lavt antall varianter og forutsigbar etterspørsel gjør at Kvile kan planlegge kapasiteten effektivt uten å binde kapital i ferdigvarer. Denne styringsformen bør videreføres.
+
+MTS-styringen for butikkmarkedet er derimot utfordrende av tre grunner. For det første medfører 304 varianter på ferdigvarelager betydelig kapitalbinding og risiko for fargekombinasjoner med lavt salg. For det andre forsterker sesongsvingningene problemet: 50\,\% av salget skjer i mai--juli, noe som krever enten stor lageroppbygging i forkant eller kraftig kapasitetsøkning i produksjonen om våren. For det tredje vokser variantantallet med 96 nye SKU-er for hver ny modell som lanseres, noe som gjør lagerstyringen stadig mer kompleks.
+
+\textbf{Forslag: Overgang til montasje på ordre (ATO).} Kvile kan flytte KODP fra ferdigvarelageret til komponentlageret ved å lagre ferdige, lakkerte halvfabrikata slik som aluminiumsrammer og trekomponenter separat. Når en ordre fra Plantasjen eller Møbelringen mottas, monteres riktig kombinasjon av ramme og tredeler, pakkes og klargjøres for henting. Dette er praktisk gjennomførbart fordi sluttmontasjen ifølge casebeskrivelsen kun krever enkle verktøy som skrutrekker og skiftenøkkel, og kjedene har tilstrekkelig ledetid (Plantasjen bestiller annenhver uke, Møbelringen månedlig).
+
+Effekten på lagerkompleksiteten er betydelig. Tabell~\ref{tab:ato-sammenligning} viser hvordan antall lagervarer reduseres ved en overgang fra MTS til ATO.
+
+% --- Tabell: MTS vs ATO lagervarer ---
+\begin{table}[htbp]
+    \centering
+    \caption[MTS vs.\ ATO lagervarer]{Sammenligning av antall lagervarer (SKU-er) ved MTS og ATO for butikkmarkedet.}
+    \label{tab:ato-sammenligning}
+    \small
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        & \textbf{MTS (nå)} & \textbf{ATO (forslag)} \\
+        \midrule
+        Alu-rammer (4 modeller $\times$ 6 farger $\times$ delsett)
+            & --- & $\sim$48 \\
+        Trekomponenter (8 farger $\times$ delsett)
+            & --- & $\sim$24 \\
+        Ferdigvarer (bord + benk, alle kombinasjoner)
+            & 304 & 0 \\
+        \midrule
+        \textbf{Totalt på lager} & \textbf{304} & $\mathbf{\sim}$\textbf{72} \\
+        \textbf{Reduksjon} & & \textbf{$\sim$76\,\%} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Beregningen er en forenkling, ettersom faktisk antall komponent-SKU-er avhenger av hvordan delsett defineres og hvor standardiserte komponentene er på tvers av modellene. Likevel illustrerer den hovedpoenget: ved å lagre komponenter fremfor ferdig monterte fargekombinasjoner reduseres lagerkompleksiteten betydelig.
+
+ATO-modellen åpner også for å styre komponentlageret med \textit{Kanban}: når montasjen forbruker en beholder med f.eks.\ blå aluminiumsrammer, sendes et påfyllsignal tilbake til lakkhallen. Slik går man fra ren push til et hybrid push/pull-system der produksjon av halvfabrikata fortsatt planlegges med MRP (faste seriestørrelser er naturlig gitt omstillingstiden på lakkanleggene), mens sluttmontasjen trekkes av faktiske kundeordrer. Dette reduserer særlig ferdigvarelager, overproduksjon av svake fargekombinasjoner og kapitalbinding.
+
+En overgang til ATO forutsetter likevel at sluttmontasjen har tilstrekkelig kapasitet i høysesongen. Lagerproblemet fjernes heller ikke fullstendig, men flyttes fra ferdigvarer til halvfabrikata. Dersom etterspørselen etter enkelte farger blir svært skjev, kan Kvile fortsatt få ubalanse i komponentlageret. ATO bør derfor kombineres med sesongjusterte minimums- og maksimumsnivåer for komponenter, samt løpende analyse av hvilke fargekombinasjoner som faktisk selger.
+
+ATO bør suppleres med syklisk styring av lakkanleggene og økt komponentstandardisering på tvers av modellene. I tillegg bør Kvile bruke salgsdata til å redusere farger med lav omløpshastighet, dersom dette ikke svekker kundeverdien vesentlig.
+
+% FIGUR: Kundeordrens dekoblingspunkt (KODP) hos Kvile AS
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0.5cm and 0.55cm,
+        box/.style={draw, rounded corners=2pt, minimum height=0.75cm, minimum width=1.4cm, font=\scriptsize, align=center},
+        progbox/.style={box, fill=gray!20},
+        ordrebox/.style={box, fill=orange!20},
+        arrw/.style={-{Stealth[length=2mm]}, semithick},
+        lbl/.style={font=\tiny, text=black!55},
+        >={Stealth[length=2mm]},
+    ]
+
+    % ===== VEGVESENET (MTO) =====
+    \node[font=\scriptsize\bfseries, anchor=east] at (-0.3, 0) {Vegvesenet};
+    \node[font=\tiny, anchor=east, text=black!50] at (-0.3, -0.3) {(MTO)};
+
+    \node[progbox]  (v-inn)   at (1.0, 0) {Innkjøp};
+    \node[ordrebox, right=of v-inn]  (v-prod) {Produksjon};
+    \node[ordrebox, right=of v-prod] (v-mont) {Montasje};
+    \node[ordrebox, right=of v-mont] (v-lev)  {Levering};
+    \node[box, right=of v-lev, fill=blue!10]  (v-kunde) {Kunde};
+
+    \draw[arrw] (v-inn) -- (v-prod);
+    \draw[arrw] (v-prod) -- (v-mont);
+    \draw[arrw] (v-mont) -- (v-lev);
+    \draw[arrw] (v-lev) -- (v-kunde);
+
+    % KODP
+    \coordinate (v-kodp) at ($(v-inn.east)!0.5!(v-prod.west)$);
+    \draw[red!70!black, thick, dashed] (v-kodp) ++(0, 0.55) -- ++(0, -1.1);
+    \node[font=\tiny\bfseries, red!70!black, above] at ($(v-kodp)+(0, 0.55)$) {KODP};
+
+    \node[lbl] at ($(v-inn)+(0, 0.6)$) {Prognose};
+    \node[lbl] at ($(v-prod)+(0, 0.6)$) {Kundeordre};
+
+
+    % ===== BUTIKK NÅ (MTS) =====
+    \node[font=\scriptsize\bfseries, anchor=east] at (-0.3, -2.2) {Butikk \textit{(nå)}};
+    \node[font=\tiny, anchor=east, text=black!50] at (-0.3, -2.5) {(MTS)};
+
+    \node[progbox] (b-inn)   at (1.0, -2.2) {Innkjøp};
+    \node[progbox, right=of b-inn]  (b-prod)  {Produksjon};
+    \node[progbox, right=of b-prod] (b-mont)  {Montasje};
+    \node[progbox, right=of b-mont] (b-lager) {FV-lager};
+    \node[box, right=of b-lager, fill=blue!10] (b-kunde) {Kunde};
+
+    \draw[arrw] (b-inn)  -- (b-prod);
+    \draw[arrw] (b-prod) -- (b-mont);
+    \draw[arrw] (b-mont) -- (b-lager);
+    \draw[arrw] (b-lager) -- (b-kunde);
+
+    % KODP
+    \coordinate (b-kodp) at ($(b-lager.east)!0.5!(b-kunde.west)$);
+    \draw[red!70!black, thick, dashed] (b-kodp) ++(0, 0.55) -- ++(0, -1.1);
+    \node[font=\tiny\bfseries, red!70!black, above] at ($(b-kodp)+(0, 0.55)$) {KODP};
+
+    \node[lbl] at ($(b-inn)+(0, 0.6)$) {Prognose};
+    \node[lbl] at ($(b-mont)+(0, 0.6)$) {Prognose};
+
+    % 304 SKU-er
+    \node[font=\tiny, text=red!60!black, below=2pt of b-lager] {304 SKU-er};
+
+
+    % ===== BUTIKK FORSLAG (ATO) =====
+    \node[font=\scriptsize\bfseries, anchor=east] at (-0.3, -4.4) {Butikk \textit{(forslag)}};
+    \node[font=\tiny, anchor=east, text=black!50] at (-0.3, -4.7) {(ATO)};
+
+    \node[progbox] (a-inn)   at (1.0, -4.4) {Innkjøp};
+    \node[progbox, right=of a-inn]  (a-prod)  {Prod.\ +\\[-2pt]lakk};
+    \node[progbox, right=of a-prod] (a-lager) {Komp.-\\[-2pt]lager};
+    \node[ordrebox, right=of a-lager] (a-mont) {Mont.\ +\\[-2pt]pakk};
+    \node[box, right=of a-mont, fill=blue!10] (a-kunde) {Kunde};
+
+    \draw[arrw] (a-inn)   -- (a-prod);
+    \draw[arrw] (a-prod)  -- (a-lager);
+    \draw[arrw] (a-lager) -- (a-mont);
+    \draw[arrw] (a-mont)  -- (a-kunde);
+
+    % KODP
+    \coordinate (a-kodp) at ($(a-lager.east)!0.5!(a-mont.west)$);
+    \draw[red!70!black, thick, dashed] (a-kodp) ++(0, 0.55) -- ++(0, -1.1);
+    \node[font=\tiny\bfseries, red!70!black, above] at ($(a-kodp)+(0, 0.55)$) {KODP};
+
+    \node[lbl] at ($(a-inn)+(0, 0.6)$) {Prognose};
+    \node[lbl] at ($(a-mont)+(0, 0.6)$) {Kundeordre};
+
+    % ~72 SKU-er
+    \node[font=\tiny, text=green!50!black, below=2pt of a-lager] {$\sim$72 SKU-er};
+
+
+    % ===== FORKLARING =====
+    \node[draw, rounded corners, fill=white, inner sep=4pt, font=\tiny, anchor=north west] 
+        at (-0.3, -5.8) {%
+            \textcolor{gray!50}{\rule{0.4cm}{4pt}} Prognosestyrt \quad
+            \textcolor{orange!45}{\rule{0.4cm}{4pt}} Ordrestyrt \quad
+            \textcolor{red!70!black}{- - -} KODP
+        };
+
+    \end{tikzpicture}
+    \caption[KODP for Kviles kundesegmenter]{Kundeordrens dekoblingspunkt (KODP) for Kviles to kundesegmenter. Øverst: Vegvesenet (MTO). Midten: butikkmarkedet i dag (MTS) med 304 SKU-er på ferdigvarelager. Nederst: foreslått ATO-løsning med $\sim$72 komponent-SKU-er.}
+    \label{fig:kodp}
+\end{figure}

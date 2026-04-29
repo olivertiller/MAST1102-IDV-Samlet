@@ -1,0 +1,47 @@
+\section{Teori}
+
+\subsection{Vibrasjonsmåling på kulelager}
+Vibrasjoner i roterende maskiner skyldes ofte ubalanse, geometriske avvik, varierende belastning eller lokale skader i lageret \parencite{vibrasjon3}. I en slik analyse sier frekvensen mest om hvor vibrasjonen kommer fra, mens amplituden sier noe om hvor kraftig vibrasjonen er \parencite{vibrasjon1, vibrasjon2}.
+
+Ubalanse gir typisk en tydelig topp ved grunnfrekvensen, også kalt 1X, fordi kraften opptrer én gang per omdreining \parencite{vibrasjon2}. Lokale skader i lageret gir derimot vibrasjoner ved karakteristiske lagerfrekvenser, avhengig av om skaden sitter i ytterring, innerring eller kule \parencite{vibrasjon3}.
+
+\subsection{Forskyvning, hastighet og akselerasjon}
+Vibrasjon kan beskrives som forskyvning, hastighet eller akselerasjon. Forskyvning egner seg best ved lave frekvenser, hastighet er mye brukt ved generell maskinvibrasjon, og akselerasjon fanger opp høyfrekvente signaler som ofte er knyttet til lagerfeil \parencite{vibrasjon1}. I dette forsøket ble vibrasjonene målt med akselerometre, mens resultatene vurderes som vibrasjonshastighet i mm/s.
+
+\subsection{Overrullingsfrekvenser}
+For å finne ut hvilken del av lageret som forårsaker vibrasjoner, kan målte frekvenser sammenlignes med de karakteristiske lagerfrekvensene \parencite{vibrasjon3, beregninglager}:
+\begin{itemize}
+    \item \textbf{BPFO} (Ball Pass Frequency Outer race), $f_y$ -- ytterringens overrullingsfrekvens
+    \item \textbf{BPFI} (Ball Pass Frequency Inner race), $f_i$ -- innerringens overrullingsfrekvens
+    \item \textbf{BSF} (Ball Spin Frequency), $f_r$ -- kulens rotasjonsfrekvens
+\end{itemize}
+I tillegg finnes FTF (Fundamental Train Frequency), som beskriver kuleholderens rotasjonsfrekvens, men denne analyseres ikke videre i forsøket.
+
+Overrullingsfrekvensene kan beregnes fra lagergeometrien \parencite{beregninglager}:
+
+\textbf{Overrullingsfrekvens ytterring (BPFO):}
+\[
+\text{BPFO} = \frac{N_B}{2} \left[ 1 - \frac{B_D}{P_D}\cos(\theta) \right] \cdot \frac{\text{RPM}}{60}
+\]
+
+\textbf{Overrullingsfrekvens innerring (BPFI):}
+\[
+\text{BPFI} = \frac{N_B}{2} \left[ 1 + \frac{B_D}{P_D}\cos(\theta) \right] \cdot \frac{\text{RPM}}{60}
+\]
+
+\textbf{Kulens rotasjonsfrekvens (BSF):}
+\[
+\text{BSF} = \frac{P_D}{2 B_D} \left[ 1 - \left( \frac{B_D}{P_D} \cos(\theta) \right)^2 \right] \cdot \frac{\text{RPM}}{60}
+\]
+
+Her er $N_B$ antall kuler, $B_D$ kulediameter, $P_D$ pitch diameter og $\theta$ kontaktvinkelen. For enradige kulelager som R10-lageret på BN-riggen kan kontaktvinkelen settes til $\theta = 0°$ \parencite{beregninglager}. I denne rapporten brukes frekvensene avlest fra SKF Observer videre i analysen. Formlene viser prinsippet bak lagerfrekvensene, men de endelige verdiene hentes fra måledataene.
+
+\subsection{Lagerskader og frekvensspekter}
+Lagerskader utvikler seg gradvis og gir ulike utslag i frekvensspekteret avhengig av skadegrad \parencite{vibrasjon3}. I tidlig fase oppstår små skader i kontaktflatene, noe som gir svake, høyfrekvente vibrasjoner. Disse signalene har ofte lav amplitude, som gjør at de ligger nært støygulvet og kan være vanskelige å identifisere. 
+\newline Etter hvert som skaden utvikler seg, vil signalet gi tydeligere topper ved lagerfrekvensene, i henhold til hvor ofte lagerkulene passerer det skadde området.
+\newline I praksis brukes frekvensspekteret til å identifisere slike mønstre. Tydelige topper ved $f_y$, $f_i$ eller $f_r$, indikerer lokal lagerskade. Fravær av slike topper betyr derimot ikke nødvendigvis at lageret er feilfritt, men at det ikke foreligger en utviklet skade som gir utslag i det målte frekvensområdet.
+\newline I denne rapporten vurderes frekvensspekteret med fokus på om det finnes tydelige topper ved $f_y$, $f_i$ og $f_r$, som kan indikere skade i henholdsvis ytterring, innerring eller kule.
+%Lagerskader utvikler seg gradvis \parencite{vibrasjon3}. Tidlige skader gir ofte høyfrekvente signaler, mens mer utviklede skader viser seg som tydelige topper ved lagerdefektfrekvensene og deres harmoniske. I denne rapporten ser vi etter om det finnes slike topper ved $f_y$, $f_i$ og $f_r$. Dersom slike topper ikke finnes, er det ikke grunnlag for å påvise en tydelig lokal lagerskade i målingen.
+
+\subsection{Fourier-transformasjon}
+Akselerometeret måler først vibrasjonen som et tidssignal. Dette signalet er vanskelig å tolke direkte, siden flere vibrasjonskilder kan opptre samtidig. Derfor omformes signalet til et frekvensspekter ved hjelp av Fourier-transformasjon \parencite{vibrasjon1}, slik at dominerende frekvenser kan identifiseres. Topper ved grunnfrekvensen kan peke mot ubalanse, mens topper ved lagerfrekvensene kan peke mot skader i ytterring, innerring eller kule.

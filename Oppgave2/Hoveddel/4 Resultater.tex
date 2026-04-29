@@ -1,0 +1,68 @@
+\section{Resultater}
+
+\subsection*{Førsteordens vibrasjon}
+Grunnfrekvensen beregnes ved å konvertere turtallet fra rpm til Hz:
+\[
+f = \frac{\mathrm{RPM}}{60}
+\]
+Målingene skulle i utgangspunktet gjennomføres ved 2500, 4000 og 6000 rpm. Under laboratorieforsøket ble de faktiske turtallene målt til 2498, 3998 og 6001 rpm. Disse verdiene brukes videre i analysen.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Turtall (rpm) & Grunnfrekvens (Hz) \\
+\hline
+2498 & 42 \\
+\hline
+3998 & 67 \\
+\hline
+6001 & 100 \\
+\hline
+\end{tabular}
+\caption{Grunnfrekvens for de målte turtallene}
+\end{table}
+
+\subsection*{Lagerfrekvensene $f_y$, $f_i$ og $f_r$}
+Frekvensene $f_y$, $f_i$ og $f_r$ ble avlest fra SKF Observer for de tre turtallene.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Turtall (rpm) & $f_y$ (Hz) & $f_i$ (Hz) & $f_r$ (Hz) \\
+\hline
+2498 & 170 & 247 & 109 \\
+\hline
+3998 & 272 & 395 & 174 \\
+\hline
+6001 & 408 & 593 & 261 \\
+\hline
+\end{tabular}
+\caption{Karakteristiske lagerfrekvenser for de målte turtallene}
+\end{table}
+
+\subsection*{Amplitude ved grunnfrekvens og lagerfrekvenser}
+Amplitudene ved grunnfrekvensen og lagerfrekvensene ble avlest fra SKF Observer og er vist i tabell~\ref{tab:amplituder}.
+
+\begin{table}[h]
+\centering
+\resizebox{0.6\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Turtall (rpm) & $A(f)$ & $A(f_y)$ & $A(f_i)$ & $A(f_r)$ \\
+\hline
+2498 & 0.323 & 0.009 & 0.002 & 0.002 \\
+\hline
+3998 & 0.346 & 0 & 0 & 0 \\
+\hline
+6001 & 2.239 & 0.002 & 0.01 & 0.001 \\
+\hline
+\end{tabular}
+}
+\caption{Amplitude $A$ (mm/s) ved grunnfrekvens og lagerfrekvenser}
+\label{tab:amplituder}
+\end{table}
+
+Amplituden er størst ved grunnfrekvensen $f$, mens amplitudene ved lagerfrekvensene $f_y$, $f_i$ og $f_r$ er svært små. Verdier oppgitt som null betyr at det ikke ble identifisert en tydelig topp ved den aktuelle frekvensen.
