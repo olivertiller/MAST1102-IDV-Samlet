@@ -22,21 +22,31 @@
 \addbibresource{Oppgave4/references.bib}
 \addbibresource{Oppgave5/references.bib}
 
-% --- Usynlig rapportnivå for etoc-scoping ---
-% Gir hver rapport sin egen innholdsfortegnelse, figurliste og tabelliste
-\newcounter{report}
+% --- Usynlig \part for rapportseparasjon (etoc-scoping) ---
+% \part produserer ingen synlig overskrift, men skriver scoping-markører
+% til .toc, .lof og .lot slik at \localtableofcontents m.fl. fungerer.
 \makeatletter
-\newcommand{\l@report}[2]{} % Ikke vis rapportnivået i noen lister
+\renewcommand\part{\secdef\@part\@spart}
+\renewcommand\@part[2][]{%
+  \refstepcounter{part}%
+  \addcontentsline{toc}{part}{}%
+  \addtocontents{lof}{\protect\contentsline{part}{}{}{}}%
+  \addtocontents{lot}{\protect\contentsline{part}{}{}{}}%
+}
+\renewcommand\@spart[1]{}
 \makeatother
-\etocsetlevel{report}{-2}   % Høyere enn \part (-1)
 
+% Visuell "deloppgave"-overskrift (erstatter \part i Oppgave 5)
+\newcommand{\deloppgave}[1]{%
+  \vspace*{4ex}%
+  {\parindent0pt\raggedright\normalfont\huge\bfseries #1\par}%
+  \vspace{3ex}%
+  \addcontentsline{toc}{section}{#1}%
+}
+
+% Start ny selvstendig rapport
 \newcommand{\reportstart}{%
-  \stepcounter{report}%
-  % Legg inn usynlige skillemerker i toc/lof/lot for etoc-scoping
-  \addtocontents{toc}{\protect\contentsline{report}{}{}{}}%
-  \addtocontents{lof}{\protect\contentsline{report}{}{}{}}%
-  \addtocontents{lot}{\protect\contentsline{report}{}{}{}}%
-  % Nullstill alle tellere for ny selvstendig rapport
+  \part{}% Usynlig scope-grense for etoc
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%
   \setcounter{subsubsection}{0}%
@@ -44,7 +54,6 @@
   \setcounter{table}{0}%
   \setcounter{equation}{0}%
   \setcounter{footnote}{0}%
-  \setcounter{part}{0}%
 }
 
 \begin{document}
