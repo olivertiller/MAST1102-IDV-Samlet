@@ -6,9 +6,7 @@
 \subsection{Relevant teori}
 Kundeordrens dekoblingspunkt (KODP) er det punktet i materialflyten som skiller produksjon basert på kundeordre fra produksjon basert på prognose eller lagernivå \parencite{strandhagen2024}. Plasseringen av KODP gir opphav til fire hovedstyringsformer: engineering på ordre (ETO), produksjon på ordre (MTO), montasje på ordre (ATO) og produksjon til lager (MTS). Når KODP ligger langt oppstrøms, slik som ved MTO, skjer en større del av produksjonen etter kundeordre. Det gir høy fleksibilitet, men lengre leveringstid. Når KODP ligger langt nedstrøms, slik som ved MTS, produseres mer på prognose, noe som gir kort leveringstid men øker risikoen for feil lagerbeholdning \parencite{slack2019}.
 
-Innenfor lagernivåstyrt produksjon skilles det videre mellom trykk- og sugsystemer. I et trykksystem (push) styres produksjonen av prognoser og planer som ``trykker'' materialer gjennom verdikjeden, mens et sugsystem (pull) lar faktisk forbruk nedstrøms utløse påfyll fra foregående steg \parencite{strandhagen2024}. En konkret pull-mekanisme er \textit{Kanban}, der et signal fra en nedstrøms stasjon utløser påfyll oppstrøms, slik at varer i arbeid (VIA) holdes på et minimum. Valg av styringsprinsipp henger tett sammen med omstillingstider: lange omstillingstider favoriserer store serier og lavere frekvens, mens korte omstillingstider muliggjør mindre batcher og hyppigere produksjonsskifter.
-
-Lean-filosofien vektlegger å redusere sløsing i produksjonen, blant annet overproduksjon, unødvendig lager og transport \parencite{strandhagen2024}.
+I et trykksystem (push) styres produksjonen av prognoser, mens et sugsystem (pull) lar faktisk forbruk nedstrøms utløse påfyll \parencite{strandhagen2024}. Lean-filosofien vektlegger å redusere sløsing, blant annet overproduksjon, unødvendig lager og transport \parencite{strandhagen2024}.
 
 
 \subsection{Nåsituasjon hos Kvile}
@@ -72,12 +70,6 @@ Effekten på lagerkompleksiteten er stor. Tabell~\ref{tab:ato-sammenligning} vis
         \bottomrule
     \end{tabular}
 \end{table}
-
-Beregningen er en forenkling, ettersom faktisk antall komponent-SKU-er avhenger av hvordan delsett defineres og hvor standardiserte komponentene er på tvers av modellene. Likevel illustrerer den hovedpoenget: ved å lagre komponenter fremfor ferdig monterte fargekombinasjoner reduseres lagerkompleksiteten betydelig.
-
-ATO-modellen åpner også for å styre komponentlageret med \textit{Kanban}: når montasjen forbruker en beholder med f.eks.\ blå aluminiumsrammer, sendes et påfyllsignal tilbake til lakkhallen. Slik går man fra ren push til et hybrid push/pull-system der produksjon av halvfabrikata fortsatt planlegges med MRP (faste seriestørrelser er naturlig gitt omstillingstiden på lakkanleggene), mens sluttmontasjen trekkes av faktiske kundeordrer. Dette reduserer særlig ferdigvarelager, overproduksjon av svake fargekombinasjoner og kapitalbinding.
-
-En overgang til ATO forutsetter likevel at sluttmontasjen har tilstrekkelig kapasitet i høysesongen. Lagerproblemet fjernes heller ikke fullstendig, men flyttes fra ferdigvarer til halvfabrikata. Dersom etterspørselen etter enkelte farger blir svært skjev, kan Kvile fortsatt få ubalanse i komponentlageret. ATO bør derfor kombineres med sesongjusterte minimums- og maksimumsnivåer for komponenter, samt løpende analyse av hvilke fargekombinasjoner som faktisk selger.
 
 I tillegg bør Kvile vurdere å redusere farger med lav omløpshastighet og innføre syklisk styring av lakkanleggene.
 
