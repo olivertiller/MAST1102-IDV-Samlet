@@ -158,7 +158,7 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 \end{refsection}
 
 % ============================================================
-%  OPPGAVE 4: (plassholder)
+%  OPPGAVE 4: Pelton – virkningsgrad
 % ============================================================
 \begin{refsection}[Oppgave4/references.bib]
 
@@ -172,7 +172,7 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 \textsc{\Large Industriell Drift og Vedlikehold}\\[0.5cm]
 \vbox{ }
 \HRule \\[0.4cm]
-{ \huge \bfseries Rapport 4: (tittel)}\\[0.4cm]
+{ \huge \bfseries Rapport 4: Pelton – virkningsgrad}\\[0.4cm]
 \HRule \\[1.5cm]
 \large
 \emph{Kandidatnummer:}\\
@@ -181,9 +181,29 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 \end{center}
 \end{titlepage}
 
+\frontmatter
+
+\newpage
+\section*{Sammendrag}
+I denne laboratorierapporten er virkningsgraden til en Pelton-turbin undersøkt ved hjelp av et laboratorieoppsett med lukket vannkretsløp. Målet med forsøket var å analysere hvordan ulike nålposisjoner og belastninger påvirker turbinens ytelse. Forsøket ble gjennomført ved to ulike nålposisjoner, der turtall, dreiemoment, volumstrøm og trykk ble direkte avlest fra oppsettet. Basert på disse måleverdiene ble mekanisk effekt, hydraulisk effekt og virkningsgrad beregnet.
+
+Resultatene viser at nålposisjon 3 ga høyest målt virkningsgrad på 58,4\% mens nålposisjon 7 oppnådde en maksimal virkningsgrad på 50,7\%. For begge nålposisjonene ble maksimal virkningsgrad oppnådd ved tilnærmet samme turbinturtall, noe som samsvarer med teori for Pelton-turbiner. De målte virkningsgradene fremstår rimelige for et lite laboratorieoppsett, men de er lavere enn det som normalt forventes for større, optimaliserte Pelton-turbiner i fullskala drift. Resultatene viser videre at nålposisjonen påvirker nivået på virkningsgraden, og det anbefales å utføre ytterligere målinger med flere nålposisjoner for å fastslå optimal drift.
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
 \mainmatter
 
-\input{Oppgave4/innhold}
+\newpage
+\input{Oppgave4/Hoveddel/1 Om rapporten}
+\input{Oppgave4/Hoveddel/2 Relevant teori}
+\input{Oppgave4/Hoveddel/3 Lab-oppsettet}
+\input{Oppgave4/Hoveddel/4 Systemets virkemåte.tex}
+\input{Oppgave4/Hoveddel/4.5 Metode}
+\input{Oppgave4/Hoveddel/5 Utregning av virkingsgrader}
+\input{Oppgave4/Hoveddel/6 Konklusjon}
 
 \newpage
 \printbibliography[title={Referanser}]

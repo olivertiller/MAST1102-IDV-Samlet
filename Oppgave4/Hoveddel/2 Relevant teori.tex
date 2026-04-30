@@ -1,0 +1,59 @@
+\section*{Teori}
+\setcounter{section}{1}
+\setcounter{subsection}{0}
+\addcontentsline{toc}{section}{Teori}
+
+\subsection{Pelton-turbin}
+
+
+En Pelton-turbin er en impulsturbin konstruert for å utnytte vannets tilgjengelige kinetiske energi på en effektiv måte. Slike turbiner benyttes typisk i vannkraftverk med høyt fall relativt lav vannføring, der energien i vannstrålen omdannes til mekanisk rotasjonsenergi i løpehjulet \parencite{Turbiner}.
+Vannets hastighet reguleres ved hjelp av en dyse, der trykkenergien i vannet omdannes til kinetisk energi. Ved økt trykfall over dysen vil utløpshastigheten øke, gitt konstant massestrøm, noe som resulterer i høyere kinetisk energi i vannstrålen \parencite{HM4501_Pelton-Turbine}. Sammenhengen mellom volumstrøm $Q$, tverrsnittsareal $A$ og hastighet $v$ er gitt ved kontinuitetslikningen 
+\[
+v = \frac{Q}{A}.
+\]
+
+
+I en Pelton-turbin skjer trykkfallet hovedsakelig i dysen/injektoren. Det er her trykkenergien fra vannet omdannes til kinetisk energi i vannstrålen før strålen treffer skovlene på løpehjulet. Selve løpehjulet arbeider derfor hovedsakelig med å endre vannets bevegelsesmengde, ikke med å utnytte et stort trykkfall gjennom turbinen.
+
+Vannstrålen treffer deretter skovlene på turbinens løpehjul, som er utformet for å endre vannets strømningsretning mest mulig. Denne retningsendringen medfører en endring i vannets bevegelsesmengde og dermed en impuls som resulterer i en kraft på skovlene. Denne kraften gir opphav til et dreiemoment som får turbinen til å rotere \parencite{Turbiner}. Bevegelsesmengden til vannet kan uttrykkes som 
+\[
+p = m \cdot v
+\]
+mens impulsen er definert som endringen i bevegelsesmengde
+\[
+I = \Delta p = m\left(v_{ut} - v_{inn}\right).
+\]
+
+Løpehjulet er koblet til en aksling som overfører den mekaniske effekten videre til en last. I et virkelig vannkraftverk vil denne lasten typisk være en generator. I lab-oppsettet benyttes et bremsebelte koblet til en bremsetrommel for å påføre og regulere belastningen på akslingen. Bremsemekanismen simulerer dermed generatorbelastningen i et virkelig vannkraftverk. Dreiemomentet som påføres akslingen måles ved hjelp av en ekstern kraftsensor.
+
+\subsection{Virkningsgrad}
+Pelton-turbiner benyttes i vannkraftverk for å omdanne vannets energi til mekanisk rotasjonsenergi, som videre kan utnyttes til elektrisitetsproduksjon. Hvor effektivt denne energiomdanningen skjer, beskrives ved turbinens virkningsgrad, som defineres som forholdet mellom avgitt mekanisk effekt og tilført hydraulisk effekt \parencite{Turbiner}.
+
+Virkningsgraden uttrykkes som
+\[
+\eta_{effekt} = \frac{P_{mekanisk}} {P_{hydraulisk}}.
+\]
+
+Den mekaniske effekten på turbinakselen er gitt ved
+\[
+P_{mekanisk} = 2\pi n  M = \omega  M,
+\]
+der $n$ er turbinens rotasjonshastighet og $M$ er påført dreiemoment. Den mekaniske effekten representerer den nyttige effekten som er overført fra vannstrålen til turbinens løpehjul.
+Den hydrauliske effekten er gitt ved
+\[
+P_{hydraulisk} = \rho  Q  Y,
+\]
+der $\rho$ er vannets tetthet, $Q$ er volumstrømmen og $Y$ er den spesifikke energien i vannstrålen. Den spesifikke energien kan uttrykkes som
+\[
+Y = \frac{1}{\rho}(p_{3}-p_{amb})+\frac{1}{2}C_{i}^2 
+\]
+og består av både trykkenergi og kinetisk energi. Her er $p_{3}$ trykket målt ved trykksensor $P_{3}$, $p_{amb}$ er atmosfæretrykket, og $C_{i}$ er vannets hastighet før dysen.
+
+Vannhastigheten beregnes ved hjelp av kontinuitetslikningen
+\[
+C_{i}=\frac{Q}{A_{i}}
+\]
+der $A_{i} = 0,001029m^2$ er tverrsnittsarealet av røret ved trykksensoren \parencite{HM4501_Pelton-Turbine}.
+
+Virkningsgraden gir dermed et mål på hvor effektivt turbinen utnytter den tilførte hydrauliske energien. Ved å analysere virkningsgraden for ulike driftsforhold kan man identifisere optimal drift og vurdere energitap i systemet.
+
