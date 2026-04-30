@@ -8,6 +8,10 @@
 \usepackage{import}
 \usepackage{booktabs}
 \usepackage{etoc}
+\usepackage[abspage,user]{zref}
+
+% --- NTNU-blå for skillesider ---
+\definecolor{ntnu-blue}{RGB}{0,80,158}
 
 % --- Biblatex med refsection for separate referanselister ---
 \usepackage[backend=biber,
@@ -23,8 +27,6 @@
 \addbibresource{Oppgave5/references.bib}
 
 % --- Usynlig \part for rapportseparasjon (etoc-scoping) ---
-% \part produserer ingen synlig overskrift, men skriver scoping-markører
-% til .toc, .lof og .lot slik at \localtableofcontents m.fl. fungerer.
 \makeatletter
 \renewcommand\part{\secdef\@part\@spart}
 \renewcommand\@part[2][]{%
@@ -46,7 +48,7 @@
 
 % Start ny selvstendig rapport
 \newcommand{\reportstart}{%
-  \part{}% Usynlig scope-grense for etoc
+  \part{}%
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%
   \setcounter{subsubsection}{0}%
@@ -56,12 +58,60 @@
   \setcounter{footnote}{0}%
 }
 
+% Farget skilleside mellom rapporter
+\newcommand{\separatorpage}[3]{% #1=label, #2=nummer, #3=tittel
+  \newpage
+  \thispagestyle{empty}
+  \zlabel{#1}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[ntnu-blue] (current page.south west) rectangle (current page.north east);
+  \end{tikzpicture}
+  \vspace*{\fill}
+  \begin{center}
+    {\color{white}\fontsize{50}{60}\selectfont\bfseries #2}\\[1.5cm]
+    {\color{white}\LARGE #3}
+  \end{center}
+  \vspace*{\fill}
+  \newpage
+}
+
 \begin{document}
+
+% ============================================================
+%  OVERORDNET OVERSIKTSSIDE
+% ============================================================
+\thispagestyle{empty}
+\vbox{ }
+\vbox{ }
+\begin{center}
+\includegraphics[width=0.40\textwidth]{NTNU_logo.png}\\[1.5cm]
+\textsc{\LARGE MAST1102 -- Maskinteknikk 2}\\[0.5cm]
+\textsc{\Large Industriell Drift og Vedlikehold}\\[1cm]
+\HRule \\[0.4cm]
+{\huge\bfseries Samlet innlevering}\\[0.4cm]
+\HRule
+\end{center}
+
+\vspace{3cm}
+
+\noindent\textbf{\Large Oversikt}\\[1em]
+\noindent\textbf{Rapport 1:} Kvile AS \dotfill side \zref[abspage]{rapport1}\\[0.8em]
+\noindent\textbf{Rapport 2:} Lab Vibrasjon \dotfill side \zref[abspage]{rapport2}\\[0.8em]
+\noindent\textbf{Rapport 3:} Tilstandsbasert Vedlikehold \dotfill side \zref[abspage]{rapport3}\\[0.8em]
+\noindent\textbf{Rapport 4:} Pelton -- virkningsgrad \dotfill side \zref[abspage]{rapport4}\\[0.8em]
+\noindent\textbf{Rapport 5:} Refleksjonsoppgave \dotfill side \zref[abspage]{rapport5}
+
+\vfill
+\begin{center}
+\large\emph{Kandidatnummer:}\\[1em]
+{\large Dato 08/05/2026}
+\end{center}
 
 % ============================================================
 %  OPPGAVE 1: Kvile AS
 % ============================================================
 \reportstart
+\separatorpage{rapport1}{Rapport 1}{Kvile AS}
 \begin{refsection}[Oppgave1/references.bib]
 
 \begin{titlepage}
@@ -116,6 +166,7 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 %  OPPGAVE 2: Lab Vibrasjon
 % ============================================================
 \reportstart
+\separatorpage{rapport2}{Rapport 2}{Lab Vibrasjon}
 \begin{refsection}[Oppgave2/references.bib]
 
 \newpage
@@ -165,6 +216,7 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 %  OPPGAVE 3: Tilstandsbasert Vedlikehold
 % ============================================================
 \reportstart
+\separatorpage{rapport3}{Rapport 3}{Tilstandsbasert Vedlikehold}
 \begin{refsection}[Oppgave3/references.bib]
 
 \newpage
@@ -210,6 +262,7 @@ Denne rapporten analyserer systempåliteligheten til et kompressortog for gassre
 %  OPPGAVE 4: Pelton – virkningsgrad
 % ============================================================
 \reportstart
+\separatorpage{rapport4}{Rapport 4}{Pelton -- virkningsgrad}
 \begin{refsection}[Oppgave4/references.bib]
 
 \newpage
@@ -264,6 +317,7 @@ Resultatene viser at nålposisjon 3 ga høyest målt virkningsgrad på 58,4\% me
 %  OPPGAVE 5: Refleksjonsoppgave
 % ============================================================
 \reportstart
+\separatorpage{rapport5}{Rapport 5}{Refleksjonsoppgave}
 \begin{refsection}[Oppgave5/references.bib]
 
 \newpage
