@@ -7,6 +7,7 @@
 \usepackage{float}
 \usepackage{import}
 \usepackage{booktabs}
+\usepackage{etoc}
 
 % --- Biblatex med refsection for separate referanselister ---
 \usepackage[backend=biber,
@@ -21,11 +22,37 @@
 \addbibresource{Oppgave4/references.bib}
 \addbibresource{Oppgave5/references.bib}
 
+% --- Usynlig rapportnivå for etoc-scoping ---
+% Gir hver rapport sin egen innholdsfortegnelse, figurliste og tabelliste
+\newcounter{report}
+\makeatletter
+\newcommand{\l@report}[2]{} % Ikke vis rapportnivået i noen lister
+\makeatother
+\etocsetlevel{report}{-2}   % Høyere enn \part (-1)
+
+\newcommand{\reportstart}{%
+  \stepcounter{report}%
+  % Legg inn usynlige skillemerker i toc/lof/lot for etoc-scoping
+  \addtocontents{toc}{\protect\contentsline{report}{}{}{}}%
+  \addtocontents{lof}{\protect\contentsline{report}{}{}{}}%
+  \addtocontents{lot}{\protect\contentsline{report}{}{}{}}%
+  % Nullstill alle tellere for ny selvstendig rapport
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \setcounter{subsubsection}{0}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \setcounter{equation}{0}%
+  \setcounter{footnote}{0}%
+  \setcounter{part}{0}%
+}
+
 \begin{document}
 
 % ============================================================
 %  OPPGAVE 1: Kvile AS
 % ============================================================
+\reportstart
 \begin{refsection}[Oppgave1/references.bib]
 
 \begin{titlepage}
@@ -57,9 +84,9 @@ Kvile klassifiseres som en serie- og batchprodusent med over 300 produktvariante
 Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanlegg. Bærekraftsanalysen identifiserer forbedringsmuligheter innen emballasje, materialvalg, transport og produktdesign.
 
 \newpage
-\tableofcontents
-\listoffigures
-\listoftables
+\localtableofcontents
+\locallistoffigures
+\locallistoftables
 
 \mainmatter
 
@@ -79,6 +106,7 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 % ============================================================
 %  OPPGAVE 2: Lab Vibrasjon
 % ============================================================
+\reportstart
 \begin{refsection}[Oppgave2/references.bib]
 
 \newpage
@@ -106,9 +134,9 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 \input{Oppgave2/Hoveddel/1 Sammendrag}
 
 \newpage
-\tableofcontents
-\listoffigures
-\listoftables
+\localtableofcontents
+\locallistoffigures
+\locallistoftables
 
 \mainmatter
 
@@ -127,6 +155,7 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 % ============================================================
 %  OPPGAVE 3: Tilstandsbasert Vedlikehold
 % ============================================================
+\reportstart
 \begin{refsection}[Oppgave3/references.bib]
 
 \newpage
@@ -155,8 +184,8 @@ Fabrikklayouten vurderes som primært funksjonell, med linjeorganiserte lakkanle
 Denne rapporten analyserer systempåliteligheten til et kompressortog for gassreinjisering på en oljeplattform. Kompressortoget består av en førstetrinns kompressor, en andretrinns kompressor og en elmotor, koblet i serie. Den beregnede systempåliteligheten er 76,1\%. Ved å innføre redundans på utvalgte komponenter kan påliteligheten økes til mellom 80\% og 98\%, avhengig av hvilke komponenter som parallellkobles. Rapporten anbefaler redundans på andretrinns kompressor og elmotor som et balansert tiltak, med en beregnet systempålitelighet på 92,9\%.
 
 \newpage
-\tableofcontents
-\listoftables
+\localtableofcontents
+\locallistoftables
 
 \mainmatter
 
@@ -171,6 +200,7 @@ Denne rapporten analyserer systempåliteligheten til et kompressortog for gassre
 % ============================================================
 %  OPPGAVE 4: Pelton – virkningsgrad
 % ============================================================
+\reportstart
 \begin{refsection}[Oppgave4/references.bib]
 
 \newpage
@@ -201,9 +231,9 @@ I denne laboratorierapporten er virkningsgraden til en Pelton-turbin undersøkt 
 Resultatene viser at nålposisjon 3 ga høyest målt virkningsgrad på 58,4\% mens nålposisjon 7 oppnådde en maksimal virkningsgrad på 50,7\%. For begge nålposisjonene ble maksimal virkningsgrad oppnådd ved tilnærmet samme turbinturtall, noe som samsvarer med teori for Pelton-turbiner. De målte virkningsgradene fremstår rimelige for et lite laboratorieoppsett, men de er lavere enn det som normalt forventes for større, optimaliserte Pelton-turbiner i fullskala drift. Resultatene viser videre at nålposisjonen påvirker nivået på virkningsgraden, og det anbefales å utføre ytterligere målinger med flere nålposisjoner for å fastslå optimal drift.
 
 \newpage
-\tableofcontents
-\listoffigures
-\listoftables
+\localtableofcontents
+\locallistoffigures
+\locallistoftables
 
 \mainmatter
 
@@ -224,6 +254,7 @@ Resultatene viser at nålposisjon 3 ga høyest målt virkningsgrad på 58,4\% me
 % ============================================================
 %  OPPGAVE 5: Refleksjonsoppgave
 % ============================================================
+\reportstart
 \begin{refsection}[Oppgave5/references.bib]
 
 \newpage
@@ -248,7 +279,7 @@ Resultatene viser at nålposisjon 3 ga høyest målt virkningsgrad på 58,4\% me
 \frontmatter
 
 \newpage
-\tableofcontents
+\localtableofcontents
 
 \mainmatter
 
