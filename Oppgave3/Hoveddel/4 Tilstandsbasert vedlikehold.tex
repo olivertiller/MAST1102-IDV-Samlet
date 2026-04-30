@@ -24,7 +24,7 @@ $R_{\text{par}}$ øker med økende antall parallellkoblede komponenter \parencit
 
 Redundans innebærer at en ekstra komponent legges til for å sikre systemfunksjonen dersom den primære komponenten feiler \parencite{pedersen_redundans}. I beregningene antas redundansen å kunne modelleres som en ideell parallellkobling, der systemfunksjonen opprettholdes så lenge minst én av de parallelle komponentene fungerer. Eventuelle innkoblingsfeil, fellesfeil og praktiske begrensninger er ikke inkludert \parencite{pedersen_redundans}.
 
-Det er viktig å skille mellom pålitelighet og tilgjengelighet. Pålitelighet beskriver sannsynligheten for feilfri drift over en periode, mens tilgjengelighet beskriver hvor stor andel av tiden systemet faktisk er operativt, og avhenger også av reparasjonstid. Mean Time To Repair (MTTR) er forventet reparasjonstid etter feil for en enkelt komponent. Selv om MTTR ikke inngår direkte i beregningen av systempålitelighet, er verdien relevant ved vurdering av konsekvensene av feil.
+Det er viktig å skille mellom pålitelighet og tilgjengelighet. Pålitelighet beskriver sannsynligheten for feilfri drift over en periode, mens tilgjengelighet beskriver hvor stor andel av tiden systemet faktisk er operativt, og avhenger også av reparasjonstid. Mean Time To Repair (MTTR) er forventet reparasjonstid etter feil for en enkelt komponent.
 
 \section{Metode}
 \subsection{Nåværende systempålitelighet for kompressortoget}
@@ -109,17 +109,15 @@ Her må det vurderes om ønsket pålitelighet, reparasjonstid og andre begrensni
 
 \textbf{\large Forslag 1 - Full redundans}
 
-Alle tre komponentene parallellkobles med en redundant komponent, altså full redundans. Dette gir den høyeste beregnede påliteligheten til kompressortoget, på 98\%. Redundansen kan også muliggjøre utføring av vedlikehold på enkeltkomponenter uten full stans i kompressortoget.
+Alle tre komponentene parallellkobles. Som tabell~\ref{tab:redundans} viser gir dette høyest pålitelighet, men det krever dobling av alle komponenter. Det må vurderes om plass, vekt og risiko for fellesfeil på plattformen tillater et slikt inngrep.
 
-Det må vurderes om den økte påliteligheten veier opp for de ekstra kostnadene ved å doble antall komponenter, samt om begrensninger på plattformen som plass, vekt og risiko for fellesfeil (for eksempel felles strømforsyning eller kontrollsystem) tillater dette inngrepet.
+\textbf{\large Forslag 2 - Prioritere pålitelighet}
 
-\textbf{\large Forslag 2 - Prioritere pålitelighet} 
-
-Andretrinns kompressoren og elmotoren parallellkobles med tilsvarende redundante komponenter. Dette gir den høyeste påliteligheten til kompressortoget ved totalt fem komponenter, på 93\%. Førstetrinns kompressor har fortsatt MTTR på 40 timer, noe som innebærer at en feil i denne komponenten kan gi lengre nedetid. Sammenlignet med forslag 1 er forslag 2 billigere, tar mindre plass og veier mindre.
+Andretrinns kompressoren og elmotoren parallellkobles. Dette gir nest høyest pålitelighet ved bare fem komponenter, og er billigere og lettere enn full redundans. Førstetrinns kompressor har fortsatt MTTR på 40 timer, så en feil der kan gi lengre nedetid.
 
 \textbf{\large Forslag 3 - Prioritere MTTR}
 
-Begge kompressorene parallellkobles med redundante kompressorer. Systempåliteligheten er lavere enn i forslag 2, på 88\%, men redundansen på kompressorene gjør at en feil i én kompressor ikke nødvendigvis fører til umiddelbar stans. Den gjenværende flaskehalsen for reparasjonstid blir da elmotoren med MTTR på 4 timer. Her må det vurderes om tapet på 5 prosentpoeng i pålitelighet veies opp av redusert konsekvens ved kompressorfeil.
+Begge kompressorene parallellkobles. Påliteligheten er lavere enn i forslag 2, men redundansen gjør at en kompressorfeil ikke nødvendigvis stopper toget. Flaskehalsen for reparasjonstid blir da elmotoren med MTTR på bare 4 timer.
 
 \section{Konklusjon}
 
